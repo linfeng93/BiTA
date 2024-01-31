@@ -34,7 +34,7 @@ This repository implements **Bi**-directional **T**uning for lossless **A**ccele
 
 - **Training Datasets**
   
-  We provide a small set of training samples for *LLaMA-2-7B-Chat* in this repository. The complete training data for *LLaMA-2-7B-Chat* can be found [here](https://).
+  We provide a small set of training samples for *LLaMA-2-7B-Chat* in this repository. The complete training data for *LLaMA-2-7B-Chat* can be found [here](https://drive.google.com/drive/folders/1V7CiTSII8NKiwafnOf9_I4riy6F32gov?usp=sharing).
 
   For experiments with other base models, such as ***Falcon***, additional preparation of training data is required.
   
@@ -59,7 +59,7 @@ This repository implements **Bi**-directional **T**uning for lossless **A**ccele
 
 - **Test Datasets**
   
-  We offer the *MT-Bench* dataset in this repository, while other datasets for evaluation (*XSum*, *CIP-test*, and *HumanEval-X*) can be found [here](https://).
+  We offer the *MT-Bench* dataset in this repository, while other datasets for evaluation (*XSum*, *CIP-test*, and *HumanEval-X*) can be found [here](https://drive.google.com/drive/folders/1a9OIHyI3ocJ1A9CipEG-HRfM2Q8wBiC6?usp=sharing).
   
 
 ## Training
