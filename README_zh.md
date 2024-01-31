@@ -1,4 +1,4 @@
-# LLaMA Factory: Training and Evaluating Large Language Models with Minimal Effort
+# LLaMA Factory: 轻松的大模型训练与评估
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/hiyouga/LLaMA-Factory?style=social)](https://github.com/hiyouga/LLaMA-Factory/stargazers)
 [![GitHub Code License](https://img.shields.io/github/license/hiyouga/LLaMA-Factory)](LICENSE)
@@ -8,47 +8,47 @@
 [![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/hiyouga/LLaMA-Factory/pulls)
 [![Discord](https://dcbadge.vercel.app/api/server/e73gccsSd?compact=true&style=flat)](https://discord.gg/e73gccsSd)
 
-👋 Join our [WeChat](assets/wechat.jpg).
+👋 加入我们的[微信群](assets/wechat.jpg)。
 
-\[ English | [中文](README_zh.md) \]
+\[ [English](README.md) | 中文 \]
 
-## LLaMA Board: A One-stop Web UI for Getting Started with LLaMA Factory
+## LLaMA Board: 通过一站式网页界面快速上手 LLaMA Factory
 
-Launch **LLaMA Board** via `CUDA_VISIBLE_DEVICES=0 python src/train_web.py`. (multiple GPUs are not supported yet)
+使用 `CUDA_VISIBLE_DEVICES=0 python src/train_web.py` 启动 **LLaMA Board**。（该界面目前仅支持单卡训练）
 
-Here is an example of altering the self-cognition of an instruction-tuned language model within 10 minutes on a single GPU.
+下面是使用单张 GPU 在 10 分钟内更改对话式大型语言模型自我认知的示例。
 
 https://github.com/hiyouga/LLaMA-Factory/assets/16256802/6ba60acc-e2e2-4bec-b846-2d88920d5ba1
 
-## Changelog
+## 更新日志
 
-[23/09/27] We supported **$S^2$-Attn** proposed by [LongLoRA](https://github.com/dvlab-research/LongLoRA) for the LLaMA models. Try `--shift_attn` argument to enable shift short attention.
+[23/09/27] 我们针对 LLaMA 模型支持了 [LongLoRA](https://github.com/dvlab-research/LongLoRA) 提出的 **$S^2$-Attn**。请使用 `--shift_attn` 参数以启用该功能。
 
-[23/09/23] We integrated MMLU, C-Eval and CMMLU benchmarks in this repo. See [this example](#evaluation) to evaluate your models.
+[23/09/23] 我们在项目中集成了 MMLU、C-Eval 和 CMMLU 评估集。使用方法请参阅[此示例](#模型评估)。
 
-[23/09/10] We supported using **[FlashAttention-2](https://github.com/Dao-AILab/flash-attention)** for the LLaMA models. Try `--flash_attn` argument to enable FlashAttention-2 if you are using RTX4090, A100 or H100 GPUs.
+[23/09/10] 我们针对 LLaMA 模型支持了 **[FlashAttention-2](https://github.com/Dao-AILab/flash-attention)**。如果您使用的是 RTX4090、A100 或 H100 GPU，请使用 `--flash_attn` 参数以启用 FlashAttention-2。
 
-[23/08/12] We supported **RoPE scaling** to extend the context length of the LLaMA models. Try `--rope_scaling linear` argument in training and `--rope_scaling dynamic` argument at inference to extrapolate the position embeddings.
+[23/08/12] 我们支持了 **RoPE 插值**来扩展 LLaMA 模型的上下文长度。请使用 `--rope_scaling linear` 参数训练模型或使用 `--rope_scaling dynamic` 参数评估模型。
 
-[23/08/11] We supported **[DPO training](https://arxiv.org/abs/2305.18290)** for instruction-tuned models. See [this example](#dpo-training) to train your models.
+[23/08/11] 我们支持了指令模型的 **[DPO 训练](https://arxiv.org/abs/2305.18290)**。使用方法请参阅[此示例](#dpo-训练)。
 
-[23/07/31] We supported **dataset streaming**. Try `--streaming` and `--max_steps 10000` arguments to load your dataset in streaming mode.
+[23/07/31] 我们支持了**数据流式加载**。请尝试使用 `--streaming` 和 `--max_steps 10000` 参数来流式加载数据集。
 
-[23/07/29] We released two instruction-tuned 13B models at Hugging Face. See these Hugging Face Repos ([LLaMA-2](https://huggingface.co/hiyouga/Llama-2-Chinese-13b-chat) / [Baichuan](https://huggingface.co/hiyouga/Baichuan-13B-sft)) for details.
+[23/07/29] 我们在 Hugging Face 发布了两个 13B 指令微调模型。详细内容请查阅我们的 Hugging Face 项目（[LLaMA-2](https://huggingface.co/hiyouga/Llama-2-Chinese-13b-chat) / [Baichuan](https://huggingface.co/hiyouga/Baichuan-13B-sft)）。
 
-[23/07/18] We developed an **all-in-one Web UI** for training, evaluation and inference. Try `train_web.py` to fine-tune models in your Web browser. Thank [@KanadeSiina](https://github.com/KanadeSiina) and [@codemayq](https://github.com/codemayq) for their efforts in the development.
+[23/07/18] 我们开发了支持训练和测试的**浏览器一体化界面**。请尝试使用 `train_web.py` 在您的浏览器中微调模型。感谢 [@KanadeSiina](https://github.com/KanadeSiina) 和 [@codemayq](https://github.com/codemayq) 在该功能开发中付出的努力。
 
-[23/07/09] We released **[FastEdit](https://github.com/hiyouga/FastEdit)** ⚡🩹, an easy-to-use package for editing the factual knowledge of large language models efficiently. Please follow [FastEdit](https://github.com/hiyouga/FastEdit) if you are interested.
+[23/07/09] 我们开源了 **[FastEdit](https://github.com/hiyouga/FastEdit)** ⚡🩹，一个简单易用的、能迅速编辑大模型事实记忆的工具包。如果您感兴趣请关注我们的 [FastEdit](https://github.com/hiyouga/FastEdit) 项目。
 
-[23/06/29] We provided a **reproducible example** of training a chat model using instruction-following datasets, see [Baichuan-7B-sft](https://huggingface.co/hiyouga/Baichuan-7B-sft) for details.
+[23/06/29] 我们提供了一个**可复现的**指令模型微调示例，详细内容请查阅 [Baichuan-7B-sft](https://huggingface.co/hiyouga/Baichuan-7B-sft)。
 
-[23/06/22] We aligned the [demo API](src/api_demo.py) with the [OpenAI's](https://platform.openai.com/docs/api-reference/chat) format where you can insert the fine-tuned model in **arbitrary ChatGPT-based applications**.
+[23/06/22] 我们对齐了[示例 API](src/api_demo.py) 与 [OpenAI API](https://platform.openai.com/docs/api-reference/chat) 的格式，您可以将微调模型接入**任意基于 ChatGPT 的应用**中。
 
-[23/06/03] We supported quantized training and inference (aka **[QLoRA](https://github.com/artidoro/qlora)**). Try `--quantization_bit 4/8` argument to work with quantized models.
+[23/06/03] 我们实现了 4 比特的 LoRA 训练（也称 **[QLoRA](https://github.com/artidoro/qlora)**）。请尝试使用 `--quantization_bit 4` 参数进行 4 比特量化微调。
 
-## Supported Models
+## 模型
 
-| Model                                                    | Model size                  | Default module    | Template  |
+| 模型名                                                   | 模型大小                     | 默认模块           | Template  |
 | -------------------------------------------------------- | --------------------------- | ----------------- | --------- |
 | [LLaMA](https://github.com/facebookresearch/llama)       | 7B/13B/33B/65B              | q_proj,v_proj     | -         |
 | [LLaMA-2](https://huggingface.co/meta-llama)             | 7B/13B/70B                  | q_proj,v_proj     | llama2    |
@@ -64,32 +64,32 @@ https://github.com/hiyouga/LLaMA-Factory/assets/16256802/6ba60acc-e2e2-4bec-b846
 | [Phi-1.5](https://huggingface.co/microsoft/phi-1_5)      | 1.3B                        | Wqkv              | -         |
 
 > [!NOTE]
-> **Default module** is used for the `--lora_target` argument, you can use `--lora_target all` to specify all the available modules.
+> **默认模块**应作为 `--lora_target` 参数的默认值，可使用 `--lora_target all` 参数指定全部模块。
 >
-> For the "base" models, the `--template` argument can be chosen from `default`, `alpaca`, `vicuna` etc. But make sure to use the **corresponding template** for the "chat" models.
+> 对于所有“基座”（Base）模型，`--template` 参数可以是 `default`, `alpaca`, `vicuna` 等任意值。但“对话”（Chat）模型请务必使用**对应的模板**。
 
-## Supported Training Approaches
+## 训练方法
 
-| Approach               |   Full-parameter   | Partial-parameter  |       LoRA         |       QLoRA        |
+| 方法                   |     全参数训练      |    部分参数训练     |       LoRA         |       QLoRA        |
 | ---------------------- | ------------------ | ------------------ | ------------------ | ------------------ |
-| Pre-Training           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Supervised Fine-Tuning | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Reward Modeling        |                    |                    | :white_check_mark: | :white_check_mark: |
-| PPO Training           |                    |                    | :white_check_mark: | :white_check_mark: |
-| DPO Training           | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
+| 预训练                 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 指令监督微调            | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 奖励模型训练            |                    |                    | :white_check_mark: | :white_check_mark: |
+| PPO 训练               |                    |                    | :white_check_mark: | :white_check_mark: |
+| DPO 训练               | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
 
 > [!NOTE]
-> Use `--quantization_bit 4/8` argument to enable QLoRA.
+> 请使用 `--quantization_bit 4/8` 参数来启用 QLoRA 训练。
 
-## Provided Datasets
+## 数据集
 
-- For pre-training:
+- 用于预训练：
   - [Wiki Demo (en)](data/wiki_demo.txt)
   - [RefinedWeb (en)](https://huggingface.co/datasets/tiiuae/falcon-refinedweb)
   - [StarCoder (en)](https://huggingface.co/datasets/bigcode/starcoderdata)
   - [Wikipedia (en)](https://huggingface.co/datasets/olm/olm-wikipedia-20221220)
   - [Wikipedia (zh)](https://huggingface.co/datasets/pleisto/wikipedia-cn-20230720-filtered)
-- For supervised fine-tuning:
+- 用于指令监督微调：
   - [Stanford Alpaca (en)](https://github.com/tatsu-lab/stanford_alpaca)
   - [Stanford Alpaca (zh)](https://github.com/ymcui/Chinese-LLaMA-Alpaca)
   - [GPT-4 Generated Data (en&zh)](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM)
@@ -112,41 +112,41 @@ https://github.com/hiyouga/LLaMA-Factory/assets/16256802/6ba60acc-e2e2-4bec-b846
   - [UltraChat (en)](https://github.com/thunlp/UltraChat)
   - [WebNovel (zh)](https://huggingface.co/datasets/zxbsmk/webnovel_cn)
   - [Ad Gen (zh)](https://huggingface.co/datasets/HasturOfficial/adgen)
-- For reward modeling or DPO training:
+- 用于训练奖励模型或 DPO 训练：
   - [HH-RLHF (en)](https://huggingface.co/datasets/Anthropic/hh-rlhf)
   - [Open Assistant (multilingual)](https://huggingface.co/datasets/OpenAssistant/oasst1)
   - [GPT-4 Generated Data (en&zh)](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM)
 
-Please refer to [data/README.md](data/README.md) for details.
+使用方法请参考 [data/README.md](data/README_zh.md) 文件。
 
-Some datasets require confirmation before using them, so we recommend logging in with your Hugging Face account using these commands.
+部分数据集的使用需要确认，我们推荐使用下述命令登录您的 Hugging Face 账户。
 
 ```bash
 pip install --upgrade huggingface_hub
 huggingface-cli login
 ```
 
-## Requirement
+## 软件依赖
 
-- Python 3.8+ and PyTorch 1.13.1+
-- 🤗Transformers, Datasets, Accelerate, PEFT and TRL
-- sentencepiece, protobuf and tiktoken
-- fire, jieba, rouge-chinese and nltk (used at evaluation and predict)
-- gradio and matplotlib (used in web_demo.py)
-- uvicorn, fastapi and sse-starlette (used in api_demo.py)
+- Python 3.8+ 和 PyTorch 1.13.1+
+- 🤗Transformers, Datasets, Accelerate, PEFT 和 TRL
+- sentencepiece, protobuf 和 tiktoken
+- fire, jieba, rouge-chinese 和 nltk (用于评估及预测)
+- gradio 和 matplotlib (用于网页端交互)
+- uvicorn, fastapi 和 sse-starlette (用于 API)
 
-And **powerful GPUs**!
+以及 **强而有力的 GPU**！
 
-## Getting Started
+## 如何使用
 
-### Data Preparation (optional)
+### 数据准备（可跳过）
 
-Please refer to `data/example_dataset` for checking the details about the format of dataset files. You can either use a single `.json` file or a [dataset loading script](https://huggingface.co/docs/datasets/dataset_script) with multiple files to create a custom dataset.
+关于数据集文件的格式，请参考 `data/example_dataset` 文件夹的内容。构建自定义数据集时，既可以使用单个 `.json` 文件，也可以使用一个[数据加载脚本](https://huggingface.co/docs/datasets/dataset_script)和多个文件。
 
 > [!NOTE]
-> Please update `data/dataset_info.json` to use your custom dataset. About the format of this file, please refer to `data/README.md`.
+> 使用自定义数据集时，请更新 `data/dataset_info.json` 文件，该文件的格式请参考 `data/README.md`。
 
-### Dependence Installation (optional)
+### 环境搭建（可跳过）
 
 ```bash
 git clone https://github.com/hiyouga/LLaMA-Factory.git
@@ -156,18 +156,18 @@ cd LLaMA-Factory
 pip install -r requirements.txt
 ```
 
-If you want to enable the quantized LoRA (QLoRA) on the Windows platform, you will be required to install a pre-built version of `bitsandbytes` library, which supports CUDA 11.1 to 12.1.
+如果要在 Windows 平台上开启量化 LoRA（QLoRA），需要安装预编译的 `bitsandbytes` 库, 支持 CUDA 11.1 到 12.1.
 
 ```bash
 pip install https://github.com/jllllll/bitsandbytes-windows-webui/releases/download/wheels/bitsandbytes-0.39.1-py3-none-win_amd64.whl
 ```
 
-### Train on a single GPU
+### 单 GPU 训练
 
 > [!IMPORTANT]
-> If you want to train models on multiple GPUs, please refer to [Distributed Training](#distributed-training).
+> 如果您使用多张 GPU 训练模型，请移步[多 GPU 分布式训练](#多-gpu-分布式训练)部分。
 
-#### Pre-Training
+#### 预训练
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
@@ -190,14 +190,14 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --fp16
 ```
 
-#### Supervised Fine-Tuning
+#### 指令监督微调
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --stage sft \
     --model_name_or_path path_to_llama_model \
     --do_train \
-    --dataset alpaca_gpt4_en \
+    --dataset alpaca_gpt4_zh \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
@@ -214,14 +214,14 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --fp16
 ```
 
-#### Reward Modeling
+#### 奖励模型训练
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --stage rm \
     --model_name_or_path path_to_llama_model \
     --do_train \
-    --dataset comparison_gpt4_en \
+    --dataset comparison_gpt4_zh \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
@@ -239,14 +239,14 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --fp16
 ```
 
-#### PPO Training
+#### PPO 训练
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --stage ppo \
     --model_name_or_path path_to_llama_model \
     --do_train \
-    --dataset alpaca_gpt4_en \
+    --dataset alpaca_gpt4_zh \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
@@ -261,18 +261,17 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --save_steps 1000 \
     --learning_rate 1e-5 \
     --num_train_epochs 1.0 \
-    --plot_loss \
-    --fp16
+    --plot_loss
 ```
 
-#### DPO Training
+#### DPO 训练
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --stage dpo \
     --model_name_or_path path_to_llama_model \
     --do_train \
-    --dataset comparison_gpt4_en \
+    --dataset comparison_gpt4_zh \
     --template default \
     --finetuning_type lora \
     --lora_target q_proj,v_proj \
@@ -290,16 +289,16 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --fp16
 ```
 
-### Distributed Training
+### 多 GPU 分布式训练
 
-#### Use Huggingface Accelerate
+#### 使用 Huggingface Accelerate
 
 ```bash
-accelerate config # configure the environment
-accelerate launch src/train_bash.py # arguments (same as above)
+accelerate config # 首先配置分布式环境
+accelerate launch src/train_bash.py # 参数同上
 ```
 
-<details><summary>Example config for LoRA training</summary>
+<details><summary>LoRA 训练的 Accelerate 配置示例</summary>
 
 ```yaml
 compute_environment: LOCAL_MACHINE
@@ -321,15 +320,15 @@ use_cpu: false
 
 </details>
 
-#### Use DeepSpeed
+#### 使用 DeepSpeed
 
 ```bash
 deepspeed --num_gpus 8 --master_port=9901 src/train_bash.py \
     --deepspeed ds_config.json \
-    ... # arguments (same as above)
+    ... # 参数同上
 ```
 
-<details><summary>Example config for full-parameter training with DeepSpeed ZeRO-2</summary>
+<details><summary>使用 DeepSpeed ZeRO-2 进行全参数训练的 DeepSpeed 配置示例</summary>
 
 ```json
 {
@@ -360,7 +359,7 @@ deepspeed --num_gpus 8 --master_port=9901 src/train_bash.py \
 
 </details>
 
-### Export model
+### 导出微调后的完整模型
 
 ```bash
 python src/export_model.py \
@@ -368,11 +367,11 @@ python src/export_model.py \
     --template default \
     --finetuning_type lora \
     --checkpoint_dir path_to_checkpoint \
-    --export_dir path_to_export \
+    --output_dir path_to_export \
     --fp16
 ```
 
-### API Demo
+### API 服务
 
 ```bash
 python src/api_demo.py \
@@ -383,9 +382,9 @@ python src/api_demo.py \
 ```
 
 > [!NOTE]
-> Visit `http://localhost:8000/docs` for API documentation.
+> 关于 API 文档请见 `http://localhost:8000/docs`。
 
-### CLI Demo
+### 命令行测试
 
 ```bash
 python src/cli_demo.py \
@@ -395,7 +394,7 @@ python src/cli_demo.py \
     --checkpoint_dir path_to_checkpoint
 ```
 
-### Web Demo
+### 浏览器测试
 
 ```bash
 python src/web_demo.py \
@@ -405,7 +404,7 @@ python src/web_demo.py \
     --checkpoint_dir path_to_checkpoint
 ```
 
-### Evaluation
+### 模型评估
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/evaluate.py \
@@ -413,21 +412,21 @@ CUDA_VISIBLE_DEVICES=0 python src/evaluate.py \
     --finetuning_type lora \
     --checkpoint_dir path_to_checkpoint \
     --template vanilla \
-    --task mmlu \
-    --split test \
-    --lang en \
+    --task ceval \
+    --split validation \
+    --lang zh \
     --n_shot 5 \
     --batch_size 4
 ```
 
-### Predict
+### 模型预测
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
     --stage sft \
     --model_name_or_path path_to_llama_model \
     --do_predict \
-    --dataset alpaca_gpt4_en \
+    --dataset alpaca_gpt4_zh \
     --template default \
     --finetuning_type lora \
     --checkpoint_dir path_to_checkpoint \
@@ -438,17 +437,17 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 ```
 
 > [!NOTE]
-> We recommend using `--per_device_eval_batch_size=1` and `--max_target_length 128` at 4/8-bit predict.
+> 我们建议在量化模型的预测中使用 `--per_device_eval_batch_size=1` 和 `--max_target_length 128`。
 
-## License
+## 协议
 
-This repository is licensed under the [Apache-2.0 License](LICENSE).
+本仓库的代码依照 [Apache-2.0](LICENSE) 协议开源。
 
-Please follow the model licenses to use the corresponding model weights: [LLaMA](https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md) / [LLaMA-2](https://ai.meta.com/llama/license/) / [BLOOM](https://huggingface.co/spaces/bigscience/license) / [Falcon](LICENSE) / [Baichuan](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) / [Baichuan2](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) / [InternLM](https://github.com/InternLM/InternLM#open-source-license) / [Qwen](https://huggingface.co/Qwen/Qwen-7B-Chat/blob/main/LICENSE) / [XVERSE](https://github.com/xverse-ai/XVERSE-13B/blob/main/MODEL_LICENSE.pdf) / [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B/blob/main/MODEL_LICENSE) / [Phi-1.5](https://huggingface.co/microsoft/phi-1_5/resolve/main/Research%20License.docx)
+使用模型权重时，请遵循对应的模型协议：[LLaMA](https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md) / [LLaMA-2](https://ai.meta.com/llama/license/) / [BLOOM](https://huggingface.co/spaces/bigscience/license) / [Falcon](LICENSE) / [Baichuan](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) / [Baichuan2](https://huggingface.co/baichuan-inc/Baichuan2-7B-Base/resolve/main/Baichuan%202%E6%A8%A1%E5%9E%8B%E7%A4%BE%E5%8C%BA%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) / [InternLM](https://github.com/InternLM/InternLM#open-source-license) / [Qwen](https://huggingface.co/Qwen/Qwen-7B-Chat/blob/main/LICENSE) / [XVERSE](https://github.com/xverse-ai/XVERSE-13B/blob/main/MODEL_LICENSE.pdf) / [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B/blob/main/MODEL_LICENSE) / [Phi-1.5](https://huggingface.co/microsoft/phi-1_5/resolve/main/Research%20License.docx)
 
-## Citation
+## 引用
 
-If this work is helpful, please kindly cite as:
+如果您觉得此项目有帮助，请考虑以下列格式引用
 
 ```bibtex
 @Misc{llama-factory,
@@ -459,9 +458,9 @@ If this work is helpful, please kindly cite as:
 }
 ```
 
-## Acknowledgement
+## 致谢
 
-This repo benefits from [PEFT](https://github.com/huggingface/peft), [QLoRA](https://github.com/artidoro/qlora) and [FastChat](https://github.com/lm-sys/FastChat). Thanks for their wonderful works.
+本项目受益于 [PEFT](https://github.com/huggingface/peft)、[QLoRA](https://github.com/artidoro/qlora) 和 [FastChat](https://github.com/lm-sys/FastChat)，感谢以上诸位作者的付出。
 
 ## Star History
 
