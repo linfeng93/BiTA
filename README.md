@@ -8,6 +8,8 @@ This repository implements **Bi**-directional **T**uning for lossless **A**ccele
 
 ## Setting Up Environment
 
+  Mainly consist of the following three steps.
+
 - **Install Dependencies**
   ~~~
   pip install -r requirements.txt
@@ -27,6 +29,8 @@ This repository implements **Bi**-directional **T**uning for lossless **A**ccele
   ~~~
 
 ## Preparing Data
+
+  We describe separately how to prepare the training datasets and the test datasets.
 
 - **Training Datasets**
   
