@@ -73,10 +73,10 @@ if __name__ == "__main__":
     input_prompt = sys.argv[1]
     output_dir = sys.argv[2]
     num_process = int(sys.argv[3])
-    last_ip = int(sys.argv[4])
+    ip = int(sys.argv[4])
     error_logging = "mp_error.log"
 
-    url = f"http://192.168.112.{last_ip}/generate"
+    url = f"http://{ip}/generate"
     post_template = {
         "inputs": None,
         "parameters": {

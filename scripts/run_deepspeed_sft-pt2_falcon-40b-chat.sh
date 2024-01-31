@@ -13,7 +13,7 @@ SAVE_PATH=$ROOT_DIR/output/${EXPERIMENT_NAME}
 config_json="./ds_config.json"
 cat <<EOT > $config_json
 {
-  "train_micro_batch_size_per_gpu": 2,
+  "train_micro_batch_size_per_gpu": 4,
   "gradient_accumulation_steps": 1,
   "train_batch_size": "auto",
   "gradient_clipping": 1.0,
@@ -69,7 +69,7 @@ deepspeed $DISTRIBUTED_ARGS src/train_bash.py \
   --finetuning_type pt2 \
   --model_name_or_path $ROOT_DIR/checkpoints/falcon-40b-instruct-hf\
   --dataset assembled_prompt2_gen-falcon40b \
-  --per_device_train_batch_size 2 \
+  --per_device_train_batch_size 4 \
   --gradient_accumulation_steps 1 \
   --lr_scheduler_type cosine \
   --learning_rate 3e-2 \
