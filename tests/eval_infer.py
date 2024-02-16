@@ -12,7 +12,7 @@ from rouge import Rouge
 from datasets import Dataset
 
 # Please add the path of main folder into system path
-ROOT = "/huawei-data/BD/project/BiTA"
+ROOT = os.path.abspath(f"{__file__}/../..")
 sys.path.append(ROOT)
 sys.path.append(os.path.join(ROOT, "src"))
 from src.modeling_llama_if import LlamaForCausalLM, _make_causal_mask, _expand_mask

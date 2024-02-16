@@ -39,9 +39,8 @@ from prefix_encoder import PrefixEncoder
 from llmtuner.extras.constants import IGNORE_INDEX
 from losses import MultiClassFocalLoss
 
-# Please add the path of falcon checkpoint folder into system path
-sys.path.append("/huawei-data/BD/project/BiTA/checkpoints/falcon-40b-instruct-hf")
-from configuration_falcon import FalconConfig
+from typing import TypeVar
+FalconConfig = TypeVar("FalconConfig")
 
 logger = logging.get_logger(__name__)
 
