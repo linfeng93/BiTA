@@ -122,11 +122,13 @@ This repository implements **Bi**-directional **T**uning for lossless **A**ccele
   If you find this project useful in your research, please kindly cite:
 
   ```bibtex
-  @article{lin2024bita,
+  @article{lin2025bita,
     title={BiTA: Bi-Directional Tuning for Lossless Acceleration in Large Language Models},
-    author={Lin, Feng and Yi, Hanling and Li, Hongbin and Yang, Yifan and Yu, Xiaotian and Lu, Guangming and Xiao, Rong},
-    journal={arXiv preprint arXiv:2401.12522},
-    year={2024}
+    author={Lin, Feng and Yi, Hanling and Yang, Yifan and Li, Hongbin and Yu, Xiaotian and Lu, Guangming and Xiao, Rong},
+    journal={Expert Systems with Applications},
+    pages={127305},
+    year={2025},
+    publisher={Elsevier}
   }
   ```
 
